@@ -9,7 +9,7 @@ type Task struct {
 	gorm.Model
 	ID        uint
 	TaskName  string
-	Status	  string
+	Status	  Status
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }

@@ -28,6 +28,11 @@ GET  http://localhost:8081/api/v1/persons/1
 ###delete
 DELETE http://localhost:8081/api/v1/persons/1
 
+
+###################################################################################
+###List Tasks
+GET http://localhost:8081/api/v1/tasks
+
 ###Create Tasks
 POST http://localhost:8081/api/v1/tasks
 Content-Type: application/json
@@ -36,3 +41,20 @@ Content-Type: application/json
     "taskname": "Finish C++ Proyect",
     "taskstatus": "COMPLETED"
 }
+
+###Update Tasks
+PUT http://localhost:8081/api/v1/tasks/1
+Content-Type: application/json
+
+{
+    "taskname": "Finish C++ Proyect",
+    "taskstatus": "PENDING"
+}
+
+###Get Task
+GET http://localhost:8081/api/v1/tasks/1
+
+###delete Task
+DELETE http://localhost:8081/api/v1/tasks/1
+
+###################################################################################
