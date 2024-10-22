@@ -11,4 +11,5 @@ func init() {
 
 func main() {
 	configs.DB.AutoMigrate(&models.Person{})
+	configs.DB.AutoMigrate(&models.Task{})
 }
