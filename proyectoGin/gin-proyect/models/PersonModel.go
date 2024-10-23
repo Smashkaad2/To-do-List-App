@@ -11,6 +11,7 @@ type Person struct {
 	Name      string
 	Address   string
 	Phone     uint
+	Tasks   []Task   `gorm:"foreignKey:PersonID" json:"tasks"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }

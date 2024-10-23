@@ -1,9 +1,10 @@
 package controllers
 
 import (
-	"github.com/gin-gonic/gin"
 	"gin-proyect/configs"
 	"gin-proyect/models"
+
+	"github.com/gin-gonic/gin"
 )
 
 type PersonRequestBody struct {
@@ -32,17 +33,24 @@ func PersonCreate(c *gin.Context) {
 
 func PersonGet(c *gin.Context) {
 	var persons []models.Person
-	configs.DB.Find(&persons)
+
+	if err := configs.DB.Preload("Tasks").Find(&persons).Error; err != nil {
+		c.JSON(500, gin.H{"error": "Failed to fetch persons"})
+		return
+	}
+
 	c.JSON(200, &persons)
-	return
 }
 
 func PersonGetById(c *gin.Context) {
 	id := c.Param("id")
 	var person models.Person
-	configs.DB.First(&person, id)
+	if err := configs.DB.Preload("Tasks").Find(&person,id).Error; err != nil {
+		c.JSON(500, gin.H{"error": "Failed to fetch persons"})
+		return
+	}
 	c.JSON(200, &person)
-	return
+	
 }
 
 func PersonUpdate(c *gin.Context) {

@@ -30,6 +30,8 @@ func main() {
 		log.Fatalf("Failed to migrate Task: %v", err)
 	}
 
+	configs.DB.AutoMigrate(&models.Person{}, &models.Task{})
+
 	log.Println("Database migration completed!")
 
 	configs.SeedDB()

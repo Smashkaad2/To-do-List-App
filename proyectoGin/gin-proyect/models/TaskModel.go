@@ -10,6 +10,7 @@ type Task struct {
 	ID        uint
 	TaskName  string
 	Status	  Status
+	PersonID  uint      `json:"person_id"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
